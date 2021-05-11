@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import NYTDisplay from "./NYTDisplay";
 
 export default class NYTResults extends Component {
@@ -10,15 +10,14 @@ export default class NYTResults extends Component {
       startDate: "",
       endDate: "",
       results: [],
-      pageNumber: 0,
     };
   }
 
   nytFetch = async () => {
-    let base_url: string =
+    const base_url: string =
       "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    let key: string = "";
-    let url: string = `${base_url}?api-key=${key}&q=${this.state.searchTerm}&page=${this.state.pageNumber}`;
+    const key: string = "";
+    const url: string = `${base_url}?api-key=${key}&q=${this.state.searchTerm}&page=${this.state.pageNumber}`;
 
     if (this.state.startDate) {
       url = `${url}&start-date=${this.state.startDate}`;
@@ -37,7 +36,6 @@ export default class NYTResults extends Component {
   }
 
   handleChange(){
-    
   }
 
   render() {
@@ -49,8 +47,6 @@ export default class NYTResults extends Component {
             <Input
               type="text"
               id="searchTerm"
-              name="searchTerm"
-              value={this.state.searchTerm}
             />
           </FormGroup>
           <FormGroup>
@@ -58,8 +54,6 @@ export default class NYTResults extends Component {
             <Input
               type="text"
               id="startDate"
-              name="startDate"
-              value={this.state.startDate}
             />
           </FormGroup>
           <FormGroup>
@@ -67,17 +61,13 @@ export default class NYTResults extends Component {
             <Input
               type="text"
               id="endDate"
-              name="endDate"
-              value={this.state.endDate}
             />
           </FormGroup>
           <Button type="submit">Search</Button>
         </Form>
-        {this.state.results.length > 0 ? (
-          <NYTDisplay
-            results={this.state.results}
-          />
-        ) : null}
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          
+        </div>
       </div>
     )
   }
